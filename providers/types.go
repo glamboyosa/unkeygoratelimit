@@ -1,20 +1,20 @@
 package providers
 
 type UnkeyRateLimiterPayload struct {
-	Namespace  string          `json:"namespace"`
-	Identifier string          `json:"identifier"`
-	Limit      int             `json:"limit"`
-	Duration   int             `json:"duration"`
-	Cost       int             `json:"cost"`
-	Async      bool            `json:"async"`
-	Meta       UnkeyMeta       `json:"meta"`
-	Resources  []UnkeyResource `json:"resources"`
+	Namespace  string          `json:"namespace,omitempty"`
+	Identifier string          `json:"identifier,omitempty"`
+	Limit      int             `json:"limit,omitempty"`
+	Duration   int             `json:"duration,omitempty"`
+	Cost       int             `json:"cost,omitempty"`
+	Async      bool            `json:"async,omitempty"`
+	Meta       UnkeyMeta       `json:"meta,omitempty"`
+	Resources  []UnkeyResource `json:"resources,omitempty"`
 }
 type UnkeyRateLimiterOptions struct {
-	Cost      int             `json:"cost"`
-	Async     bool            `json:"async"`
-	Meta      UnkeyMeta       `json:"meta"`
-	Resources []UnkeyResource `json:"resources"`
+	Cost      int             `json:"cost,omitempty"`
+	Async     bool            `json:"async,omitempty"`
+	Meta      UnkeyMeta       `json:"meta,omitempty"`
+	Resources []UnkeyResource `json:"resources,omitempty"`
 }
 
 type UnkeyResource struct {
