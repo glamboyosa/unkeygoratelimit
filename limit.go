@@ -65,7 +65,7 @@ func (r *unkeyRateLimiterNewInit) Ratelimit(ctx context.Context, identifier stri
 		}
 		return providers.RateLimitResult{}, fmt.Errorf("error creating request: %v", err)
 	}
-	fmt.Println("ABC",r.rootKey)
+	fmt.Println("ABC", r.rootKey)
 	req.Header.Add("Authorization", "Bearer "+r.rootKey)
 	req.Header.Add("Content-Type", "application/json")
 
