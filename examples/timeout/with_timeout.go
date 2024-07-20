@@ -27,7 +27,7 @@ func main() {
 
 	result, err := rateLimiter.Ratelimit(context.Background(), "user_123", nil)
 	if err != nil {
-		fmt.Printf("Error: %v\n", err)	
+		fmt.Printf("Error: %v\n", err)
 	}
 
 	fmt.Printf("Rate Limit Result: %+v\n", result)

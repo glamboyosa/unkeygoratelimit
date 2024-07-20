@@ -70,8 +70,8 @@ func (r *unkeyRateLimiterNewInit) Ratelimit(ctx context.Context, identifier stri
 
 	client := &http.Client{}
 	if r.Timeout != nil {
-        client.Timeout = time.Duration(r.Timeout.Ms) * time.Millisecond
-    }
+		client.Timeout = time.Duration(r.Timeout.Ms) * time.Millisecond
+	}
 	res, err := client.Do(req)
 	if err != nil {
 		// Return the fallback value if Timeout is not nil

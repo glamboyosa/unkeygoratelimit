@@ -17,8 +17,8 @@ func main() {
 	})
 
 	opts := &providers.UnkeyRateLimiterOptions{
-		Cost:      5,
-		Async:     true,
+		Cost:  5,
+		Async: true,
 	}
 
 	result, err := rateLimiter.Ratelimit(context.Background(), "user_123", opts)
