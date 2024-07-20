@@ -48,14 +48,12 @@ func New(rootKey string, i UnkeyRateLimiterNew) unkeyRateLimiterNewInit {
 }
 func (r *unkeyRateLimiterNewInit) Ratelimit(ctx context.Context, identifier string, opts *providers.UnkeyRateLimiterOptions) (providers.RateLimitResult, error) {
 	url := "https://api.unkey.dev/v1/ratelimits.limit"
-	fmt.Println(r, opts, identifier)
 	payload := mergePayload(r, opts, identifier)
 
 	payloadBytes, err := json.Marshal(payload)
 	if err != nil {
 		return providers.RateLimitResult{}, fmt.Errorf("error marshalling payload: %v", err)
 	}
-	fmt.Println(string(payloadBytes))
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bytes.NewBuffer(payloadBytes))
 	if err != nil {
@@ -65,10 +63,8 @@ func (r *unkeyRateLimiterNewInit) Ratelimit(ctx context.Context, identifier stri
 		}
 		return providers.RateLimitResult{}, fmt.Errorf("error creating request: %v", err)
 	}
-	fmt.Println("ABC", r.rootKey)
 	req.Header.Add("Authorization", "Bearer "+r.rootKey)
 	req.Header.Add("Content-Type", "application/json")
-
 	client := &http.Client{}
 	if r.Timeout != nil {
 		client.Timeout = time.Duration(r.Timeout.Ms) * time.Millisecond
@@ -96,18 +92,18 @@ func (r *unkeyRateLimiterNewInit) Ratelimit(ctx context.Context, identifier stri
 		if r.Timeout != nil {
 			return r.Timeout.Fallback, fmt.Errorf("unexpected status code: %v, body: %v using Fallback %v", res.StatusCode, string(body), r.Timeout.Fallback)
 		}
-		fmt.Println(res.StatusCode)
+	
 
 		return providers.RateLimitResult{}, fmt.Errorf("unexpected status code: %v, body: %v using Fallback %v", res.StatusCode, string(body), nil)
 	}
 
-	fmt.Println("Response:", string(body))
-	var apiResponse providers.APIResponse
+	var apiResponse providers.RateLimitResult
 	err = json.Unmarshal(body, &apiResponse)
 	if err != nil {
 		return providers.RateLimitResult{}, err
 	}
-	return apiResponse.Result, nil
+	
+	return apiResponse, nil
 }
 
 func mergePayload(r *unkeyRateLimiterNewInit, opts *providers.UnkeyRateLimiterOptions, id string) providers.UnkeyRateLimiterPayload {
@@ -120,7 +116,6 @@ func mergePayload(r *unkeyRateLimiterNewInit, opts *providers.UnkeyRateLimiterOp
 			Limit:      r.Limit,
 			Duration:   r.Duration,
 		}
-		fmt.Println("wth is the payload", payload)
 		return payload
 	} else {
 
@@ -134,7 +129,6 @@ func mergePayload(r *unkeyRateLimiterNewInit, opts *providers.UnkeyRateLimiterOp
 			Meta:       opts.Meta,
 			Resources:  opts.Resources,
 		}
-		fmt.Println("wth is the payload", payload)
 		return payload
 	}
 }

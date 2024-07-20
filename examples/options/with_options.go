@@ -11,7 +11,7 @@ import (
 
 func main() {
 	userId := "user_4f2G8T1zS4XkNoVfX8bW5E57P3U9"
-	rateLimiter := unkeygoratelimit.New(os.Getenv("ROOT_KEY"), unkeygoratelimit.UnkeyRateLimiterNew{
+	rateLimiter := unkeygoratelimit.New(os.Getenv("TEST_ROOT_KEY"), unkeygoratelimit.UnkeyRateLimiterNew{
 		Namespace: "osa.test",
 		Limit:     100,
 		Duration:  120000,

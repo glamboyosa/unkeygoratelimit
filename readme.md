@@ -107,7 +107,7 @@ func main() {
 		Limit:     100,
 		Duration:  120000,
 		Timeout: &unkeygoratelimit.UnkeyRateLimiterTimeout{
-			Ms: 5000,
+			Ms: 10 // set an unrealistic timeout,
 			Fallback: providers.RateLimitResult{
 				Success:   true,
 				Limit:     0,

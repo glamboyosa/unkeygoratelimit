@@ -10,12 +10,12 @@ import (
 )
 
 func main() {
-	rateLimiter := unkeygoratelimit.New(os.Getenv("ROOT_KEY"), unkeygoratelimit.UnkeyRateLimiterNew{
+	rateLimiter := unkeygoratelimit.New(os.Getenv("TEST_ROOT_KEY"), unkeygoratelimit.UnkeyRateLimiterNew{
 		Namespace: "osa.test",
 		Limit:     100,
 		Duration:  120000,
 		Timeout: &unkeygoratelimit.UnkeyRateLimiterTimeout{
-			Ms: 5000,
+			Ms: 10,
 			Fallback: providers.RateLimitResult{
 				Success:   true,
 				Limit:     100,
