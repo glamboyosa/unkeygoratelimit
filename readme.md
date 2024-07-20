@@ -35,7 +35,7 @@ func main() {
 	rateLimiter := unkeygoratelimit.New("your-root-key", unkeygoratelimit.UnkeyRateLimiterNew{
 		Namespace: "example",
 		Limit:     100,
-		Duration:  60,
+		Duration:  120000,
 	})
 
 	result, err := rateLimiter.Ratelimit(context.Background(), "user_123", nil)
@@ -67,7 +67,7 @@ func main() {
 	rateLimiter := unkeygoratelimit.New("your-root-key", unkeygoratelimit.UnkeyRateLimiterNew{
 		Namespace: "example",
 		Limit:     100,
-		Duration:  60,
+		Duration:  120000,
 	})
 
 	opts := &providers.UnkeyRateLimiterOptions{
@@ -105,7 +105,7 @@ func main() {
 	rateLimiter := unkeygoratelimit.New("your-root-key", unkeygoratelimit.UnkeyRateLimiterNew{
 		Namespace: "example",
 		Limit:     100,
-		Duration:  60,
+		Duration:  120000,
 		Timeout: &unkeygoratelimit.UnkeyRateLimiterTimeout{
 			Ms: 5000,
 			Fallback: providers.RateLimitResult{
@@ -138,7 +138,7 @@ Defines the configuration needed to initialize a new rate limiter instance.
 type UnkeyRateLimiterNew struct {
     Namespace string                    // Required. The namespace for your application.
     Limit     int                       // Required. The rate limit.
-    Duration  int                       // Required. The duration of the rate limit in seconds.
+    Duration  int                       // Required. The duration of the rate limit in milliseconds.
     Timeout   *UnkeyRateLimiterTimeout // Optional. Timeout settings and fallback result.
 }
 ```
