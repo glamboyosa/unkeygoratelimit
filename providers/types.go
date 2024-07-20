@@ -24,3 +24,14 @@ type UnkeyResource struct {
 }
 
 type UnkeyMeta map[string]interface{}
+
+type RateLimitResult struct {
+    Success   bool `json:"success"`
+    Limit     int  `json:"limit"`
+    Reset     int64 `json:"reset"`
+    Remaining int  `json:"remaining"`
+}
+
+type APIResponse struct {
+    Result RateLimitResult `json:"result"`
+}
