@@ -15,19 +15,19 @@ type UnkeyRateLimiterNew struct {
 	Namespace string
 	Limit     int
 	Duration  int
-	Timeout  *UnkeyRateLimiterTimeout
+	Timeout   *UnkeyRateLimiterTimeout
 }
 
 type unkeyRateLimiterNewInit struct {
 	Namespace string
 	Limit     int
 	Duration  int
-	Timeout  *UnkeyRateLimiterTimeout
+	Timeout   *UnkeyRateLimiterTimeout
 	rootKey   string
 }
 
 type UnkeyRateLimiterTimeout struct {
-	Ms int
+	Ms       int
 	Fallback providers.RateLimitResult
 }
 
@@ -35,7 +35,7 @@ func New(rootKey string, i UnkeyRateLimiterNew) unkeyRateLimiterNewInit {
 	var timeout *UnkeyRateLimiterTimeout
 	if i.Timeout != nil {
 		timeout = i.Timeout
-	} 
+	}
 
 	return unkeyRateLimiterNewInit{
 		Namespace: i.Namespace,
@@ -96,7 +96,7 @@ func (r *unkeyRateLimiterNewInit) Ratelimit(ctx context.Context, identifier stri
 
 	fmt.Println("Response:", string(body))
 	var apiResponse providers.APIResponse
-    err = json.Unmarshal(body, &apiResponse)
+	err = json.Unmarshal(body, &apiResponse)
 	if err != nil {
 		return providers.RateLimitResult{}, err
 	}
