@@ -1,4 +1,5 @@
-package types
+package providers
+
 
 type UnkeyRateLimiterPayload struct {
 	Namespace  string          `json:"namespace"`
@@ -10,6 +11,13 @@ type UnkeyRateLimiterPayload struct {
 	Meta       UnkeyMeta       `json:"meta"`
 	Resources  []UnkeyResource `json:"resources"`
 }
+type UnkeyRateLimiterOptions struct {
+	Cost       int             `json:"cost"`
+	Async      bool            `json:"async"`
+	Meta       UnkeyMeta       `json:"meta"`
+	Resources  []UnkeyResource `json:"resources"`
+}
+
 
 type UnkeyResource struct {
 	Type string `json:"type"`
