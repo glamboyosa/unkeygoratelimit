@@ -3,13 +3,14 @@ package main
 import (
 	"context"
 	"fmt"
+	"os"
 
 	"github.com/glamboyosa/unkeygoratelimit"
 	"github.com/glamboyosa/unkeygoratelimit/providers"
 )
 
 func main() {
-	rateLimiter := unkeygoratelimit.New("your-root-key", unkeygoratelimit.UnkeyRateLimiterNew{
+	rateLimiter := unkeygoratelimit.New(os.Getenv("ROOT_KEY"), unkeygoratelimit.UnkeyRateLimiterNew{
 		Namespace: "example",
 		Limit:     100,
 		Duration:  60,

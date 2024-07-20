@@ -3,12 +3,13 @@ package main
 import (
 	"context"
 	"fmt"
+	"os"
 
 	unkey "github.com/glamboyosa/unkeygoratelimit"
 )
 
 func main() {
-	rateLimiter := unkey.New("your-root-key", unkey.UnkeyRateLimiterNew{
+	rateLimiter := unkey.New(os.Getenv("ROOT_KEY"), unkey.UnkeyRateLimiterNew{
 		Namespace: "example",
 		Limit:     100,
 		Duration:  60,
