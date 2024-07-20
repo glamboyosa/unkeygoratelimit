@@ -1,6 +1,5 @@
 package providers
 
-
 type UnkeyRateLimiterPayload struct {
 	Namespace  string          `json:"namespace"`
 	Identifier string          `json:"identifier"`
@@ -12,12 +11,11 @@ type UnkeyRateLimiterPayload struct {
 	Resources  []UnkeyResource `json:"resources"`
 }
 type UnkeyRateLimiterOptions struct {
-	Cost       int             `json:"cost"`
-	Async      bool            `json:"async"`
-	Meta       UnkeyMeta       `json:"meta"`
-	Resources  []UnkeyResource `json:"resources"`
+	Cost      int             `json:"cost"`
+	Async     bool            `json:"async"`
+	Meta      UnkeyMeta       `json:"meta"`
+	Resources []UnkeyResource `json:"resources"`
 }
-
 
 type UnkeyResource struct {
 	Type string `json:"type"`
