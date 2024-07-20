@@ -4,7 +4,7 @@
 
 Global ratelimiting built for the modern web, now for Go.
 
-The `unkeygoratelimit` package provides functionality to interact with the Unkey Rate Limiter API. It allows you to check rate limits and handle rate limiting with customizable options and timeouts.
+The `unkeygoratelimit` package provides functionality to interact with the [Unkey Rate Limit API](https://www.unkey.com/blog/introducing-ratelimiting). It allows you to check rate limits and handle rate limiting with customizable options and timeouts.
 
 ## Getting Started
 
@@ -12,7 +12,7 @@ The `unkeygoratelimit` package provides functionality to interact with the Unkey
 
 1. **Obtain Your Root Key**:
 
-   - Visit app.unkey.com to get your root key. Follow the setup instructions provided on the platform.
+   - Visit [Unkey](app.unkey.com) to get your root key. Follow the setup instructions provided on the platform.
 
    - Set up namespaces as needed for your application.
 
