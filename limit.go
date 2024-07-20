@@ -77,7 +77,11 @@ func (r *unkeyRateLimiterNewInit) Ratelimit(ctx context.Context, identifier stri
 		}
 		return providers.RateLimitResult{}, fmt.Errorf("error making request: %v", err)
 	}
-	defer res.Body.Close()
+	defer func() {
+		if err := res.Body.Close(); err != nil {
+			fmt.Println("error closing response body", err)
+		}
+	}()
 
 	body, err := io.ReadAll(res.Body)
 	if err != nil {
