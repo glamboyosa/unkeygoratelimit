@@ -97,7 +97,7 @@ func (r *unkeyRateLimiterNewInit) Ratelimit(ctx context.Context, identifier stri
 			return r.Timeout.Fallback, fmt.Errorf("unexpected status code: %v, body: %v using Fallback %v", res.StatusCode, string(body), r.Timeout.Fallback)
 		}
 		fmt.Println(res.StatusCode)
-		
+
 		return providers.RateLimitResult{}, fmt.Errorf("unexpected status code: %v, body: %v using Fallback %v", res.StatusCode, string(body), nil)
 	}
 
@@ -111,9 +111,9 @@ func (r *unkeyRateLimiterNewInit) Ratelimit(ctx context.Context, identifier stri
 }
 
 func mergePayload(r *unkeyRateLimiterNewInit, opts *providers.UnkeyRateLimiterOptions, id string) providers.UnkeyRateLimiterPayload {
-	
+
 	if opts == nil {
-	
+
 		payload := providers.UnkeyRateLimiterPayload{
 			Namespace:  r.Namespace,
 			Identifier: id,
@@ -123,7 +123,7 @@ func mergePayload(r *unkeyRateLimiterNewInit, opts *providers.UnkeyRateLimiterOp
 		fmt.Println("wth is the payload", payload)
 		return payload
 	} else {
-	
+
 		payload := providers.UnkeyRateLimiterPayload{
 			Namespace:  r.Namespace,
 			Identifier: id,
@@ -134,7 +134,7 @@ func mergePayload(r *unkeyRateLimiterNewInit, opts *providers.UnkeyRateLimiterOp
 			Meta:       opts.Meta,
 			Resources:  opts.Resources,
 		}
-		fmt.Println("wth is the payload",payload)
+		fmt.Println("wth is the payload", payload)
 		return payload
 	}
 }
