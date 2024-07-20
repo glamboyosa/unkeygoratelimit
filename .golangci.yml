@@ -1,0 +1,15 @@
+linters:
+  enable:
+    - govet
+    - staticcheck
+
+issues:
+  exclude-use-default: false
+
+run:
+  timeout: 5m
+  tests: true
+
+linter-settings:
+  govet:
+    check-shadowing: true
