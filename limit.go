@@ -92,7 +92,6 @@ func (r *unkeyRateLimiterNewInit) Ratelimit(ctx context.Context, identifier stri
 		if r.Timeout != nil {
 			return r.Timeout.Fallback, fmt.Errorf("unexpected status code: %v, body: %v using Fallback %v", res.StatusCode, string(body), r.Timeout.Fallback)
 		}
-	
 
 		return providers.RateLimitResult{}, fmt.Errorf("unexpected status code: %v, body: %v using Fallback %v", res.StatusCode, string(body), nil)
 	}
@@ -102,7 +101,7 @@ func (r *unkeyRateLimiterNewInit) Ratelimit(ctx context.Context, identifier stri
 	if err != nil {
 		return providers.RateLimitResult{}, err
 	}
-	
+
 	return apiResponse, nil
 }
 
