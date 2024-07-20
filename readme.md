@@ -157,13 +157,13 @@ Fallback providers.RateLimitResult // Optional. Fallback result to use in case o
 
 Initializes a new rate limiter instance.
 
-- Parameters:
+Parameters:
 
-      - rootKey: The root key for authorization.
-      - i: Configuration object of type UnkeyRateLimiterNew.
+- rootKey: The root key for authorization.
+- i: Configuration object of type UnkeyRateLimiterNew.
 
-  Returns:
-  An instance of `unkeyRateLimiterNewInit`.
+Returns:
+An instance of `unkeyRateLimiterNewInit`.
 
 `Ratelimit(ctx context.Context, identifier string, opts *providers.UnkeyRateLimiterOptions) (providers.RateLimitResult, error)`
 Makes a rate limit request to the Unkey API.
